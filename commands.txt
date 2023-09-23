@@ -1,0 +1,24 @@
+1 Sending a message
+
+$headers = @{
+    "Content-Type" = "application/json"
+}
+
+$body = @{
+    "from" = "0xdf49EA198989c9d68e2207aBDedB8eDCeC1127B9"
+    "to" = "0xF1cC40cC162b531Ae06Bb70b8b7166E56f2bc859"
+    "message" = "Hello, this is a test plaintext!"
+}
+
+$uri = "http://localhost:8080/api/send-message"
+
+$response = Invoke-WebRequest -Uri $uri -Method Post -Headers $headers -Body ($body | ConvertTo-Json) -ContentType "application/json"
+
+# You can then access the response content like this:
+$responseContent = $response.Content
+
+Write-Host "Response Content:"
+$responseContent = $response.Content
+Write-Host $responseContent
+
+https://github.com/areejfatima99/IoT-Secured-Comms-with-AES.git
